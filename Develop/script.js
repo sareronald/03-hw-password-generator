@@ -1,5 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var passwordOptions;
+var userOptions;
 
 // Write password to the #password input
 function writePassword() {
@@ -108,91 +110,93 @@ var confirmNumber;
 function generatePassword() {
   confirmLength = prompt("How many characters would you like your password to contain?");
 
-// Loop if answer is lower than 8 or higher than 128 characters
-if (confirmLength <= 8 || confirmLength >= 128) {
-  alert("Password length must be at least 8 characters. Try again.");
+  // Loop if answer is lower than 8 or higher than 128 characters
+  if (confirmLength <= 8 || confirmLength >= 128) {
+    alert("Password length must be at least 8 characters. Try again.");
+  }
+  // If number is between 8 and 128 go to next prompt, else statement to determine the rest of the parameters of the password
+  // continues once user input is validated
+  else {
+    confirmLower = confirm("Click OK if you want lowercase characters in your password.");
+    confirmUpper = confirm("Click OK if you want uppercase characters in your password.");
+    confirmSpecial = confirm("Click OK if you want special characters in your password.");
+    confirmNumber = confirm("Click OK if you want numbers in your password.");
+  }
+  // if the user does not select any parameters for the password - alert?
+  if (!confirmSpecial && !confirmNumber && !confirmUpper && !confirmLower) {
+    alert("You must choose at least one character or number to generate a password.")
+  }
+  passwordOptions = {
+    length: confirmLength,
+    lowerCharacters: confirmLower,
+    upperCharacters: confirmUpper,
+    specialCharacters: confirmSpecial,
+    numericalCharacters: confirmNumber
+  };
+  // console.log(passwordOptions)
 }
-// If number is between 8 and 128 go to next prompt, else statement to determine the rest of the parameters of the password
-// continues once user input is validated
-else {
-  confirmLower = confirm("Click OK if you want lowercase characters in your password.");
-  confirmUpper = confirm("Click OK if you want uppercase characters in your password.");
-  confirmSpecial = confirm("Click OK if you want special characters in your password.");
-  confirmNumber = confirm("Click OK if you want numbers in your password.");
-}
-// if the user does not select any parameters for the password - alert?
-if (!confirmSpecial && !confirmNumber && !confirmUpper && !confirmLower){
-  alert("You must choose at least one character or number to generate a password.")
-}}
 
 // Build and object with all the info
-var passwordOptions = {
-  //length: confirmlength,
-  lowerCharacters: confirmLower,
-  upperCharacters: confirmUpper,
-  specialCharacters: confirmSpecial,
-  numericalCharacters: confirmNumber
-};
-
-//return passwordOptions
-//console.log()
-
 // return the object above to use for generating password
 
-/*function generatePassword(){
-	// get the object from above function
-	var userOptions = passwordOptions();
+function newPassword() {
+  // get the object from above function
+  userOptions = generatePassword();
 
-
-	var concatenatedarray =[];
-	if (userOptions.lower) {
-		passwordAray = concatenatedarray.concat(confirmLower)
-	}
-
-	if (userOptions.upper) {
-		passwordAray = concatenatedarray.concat(confirmUpper)
+  var concatenatedarray = [];
+  if (userOptions.lowerCharacters) {
+    passwordAray = concatenatedarray.concat(confirmLower)
   }
-  
-  if (userOptions.upper) {
-		passwordAray = concatenatedarray.concat(confirmSpecial)
+
+  if (userOptions.upperCharacters) {
+    passwordAray = concatenatedarray.concat(confirmUpper)
   }
-  
-  if (userOptions.upper) {
-		passwordAray = concatenatedarray.concat(confirmNumber)
-	}
 
-
-	// declare password array
-	var passwordArray = [];
-	for (var i = 0; i<userOptions.length; i++) {
+  if (userOptions.specialCharacters) {
+    passwordAray = concatenatedarray.concat(confirmSpecial)
   }
-  
-  //return 
-	// declare password array
-  // var passwordArray.join('');
 
-// Remember to get the copy button to work!
-
-/* Generator functions - http://www/net-comber.com/charset.html
-I found another way to determine random characters that is more streamlined
-than listing all the variables above, but am not quite sure how to use this
-just yet in JS - I understand the concept, but need a little more time to
-understand this fully.
-
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  if (userOptions.numericalCharacters) {
+    passwordAray = concatenatedarray.concat(confirmNumber)
+  }
 }
 
-function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+// declare password array
+var passwordArray = [];
+for (var i = 0; i < userOptions.confirmLength; i++) {
 }
 
-function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+//return 
+// declare password array
+// var passwordArray.join('');
+
+//document.getElementById("password").value = password OR querySelector
+// Function to copy password to clipboard
+function copyPassword() {
+  document.getElementById("copy").select();
+  document.execCommand("Copy")
+  alert("Password copied to clipboard");
 }
 
-function getRandomSpecial() {
-  const special ='@%+\/!#$^?:,(){}[]<>~-_.';
-  return special[Math.floor(Math.random() * special.length)];
-}
-*/
+
+// Generator functions - http://www/net-comber.com/charset.html
+// I found another way to determine random characters that is more streamlined
+// than listing all the variables above, but am not quite sure how to use this
+// just yet in JS - I understand the concept, but need a little more time to
+// understand this fully.
+
+//function getRandomLower() {
+//  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+//}
+
+//function getRandomUpper() {
+//  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+//}
+
+//function getRandomNumber() {
+//  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+//}
+
+//function getRandomSpecial() {
+//  const special ='@%+\/!#$^?:,(){}[]<>~-_.';
+//  return special[Math.floor(Math.random() * special.length)];}
