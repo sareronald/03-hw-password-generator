@@ -31,22 +31,17 @@ THEN the password is either displayed in an alert or written to the page
 ## Built With
 * [Terminal]
 * [VScode](https://code.visualstudio.com/) - The editor of choice
-* [Bootstrap](https://getbootstrap.com/docs/4.5/components/alerts/)
-* [Font Awesome](https://getbootstrap.com/docs/4.5/components/alerts/)
-* [W3 HTML validator](https://validator.w3.org/)
 
 #### Initial interface
-![GitHub Logo](screenshot1.png)
-Format: ![Alt Text](url)
+![GitHub Logo](generator-screenshot.png)
+Format: ![Alt Text](<img width="1680" alt="generator-screenshot" src="https://user-images.githubusercontent.com/67722377/91993277-85827800-ed78-11ea-99ca-9b52cd1f2e97.png">)
 
 ### Licence
-
 Due to the nature of the exercise, no license has been included.
 
-
 ### Link to the App
-<p></p> 
-<a ></a><hr>
+<p>Password Generator</p>
+<a>file:///Users/sarahronald/usyd-syd-fsf-pt-08-2020-u-c/coding-bootcamp-homework/03-hw-password-generator/Develop/index.html</a><hr>
 
 ## Authors
 * **SARAH RONALD** - 

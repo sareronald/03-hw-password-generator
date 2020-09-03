@@ -2,6 +2,8 @@
 var generateBtn = document.querySelector("#generate");
 var passwordOptions;
 var userOptions;
+var passwordArray;
+
 
 // Write password to the #password input
 function writePassword() {
@@ -133,38 +135,46 @@ function generatePassword() {
     specialCharacters: confirmSpecial,
     numericalCharacters: confirmNumber
   };
-  // console.log(passwordOptions)
+// console.log(passwordOptions)
+// call new password inside generatePassword Function so I can refer to length later
+// I know what I need to do here, but am not sure how to code this information. 
+//function passwordLength (arr) {
+//  console.log(arr);
+//call (passwordLength)
+//};
 }
 
-// Build and object with all the info
+// Build an object with all the info
 // return the object above to use for generating password
 
-function newPassword() {
+function newPasswords(generation) {
   // get the object from above function
-  userOptions = generatePassword();
+  userOptions = passwordOptions();
 
-  var concatenatedarray = [];
+  var concatenatedArray = [];
   if (userOptions.lowerCharacters) {
-    passwordAray = concatenatedarray.concat(confirmLower)
+    passwordArray = concatenatedarray.concat(lowerCharacters)
   }
 
   if (userOptions.upperCharacters) {
-    passwordAray = concatenatedarray.concat(confirmUpper)
+    passwordArray = concatenatedarray.concat(upperCharacters)
   }
 
   if (userOptions.specialCharacters) {
-    passwordAray = concatenatedarray.concat(confirmSpecial)
+    passwordArray = concatenatedarray.concat(specialCharacters)
   }
 
   if (userOptions.numericalCharacters) {
-    passwordAray = concatenatedarray.concat(confirmNumber)
+    passwordArray = concatenatedarray.concat(numericalCharacters)
   }
 }
 
 // declare password array
-var passwordArray = [];
-for (var i = 0; i < userOptions.confirmLength; i++) {
-}
+// length is undefined (and I am not sure how to fix this) so the code below does not work. 
+// var passwordArray = [];
+// for (var i = 0; i <passwordOptions.length; i++) {
+// console.log(passwordOptions)
+// }
 
 //return 
 // declare password array
